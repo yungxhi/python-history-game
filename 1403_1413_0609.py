@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((1100, 700))  # 1100x900 크기의 창 생성
 pygame.display.set_caption("한국사 퀴즈")     # 창 제목 설정
 clock = pygame.time.Clock()  # FPS 초당 프레임 수 조절
 
-font = pygame.font.SysFont("AppleGothic", 36)  # 한글이 깨져서 변경
+font = pygame.font.Font("SB-L.ttf", 36)  # 한글이 깨져서 변경
 
 # -------------------------------
 # 색상 정의 (R, G, B 값으로 표현)
