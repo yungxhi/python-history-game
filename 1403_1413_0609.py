@@ -11,7 +11,7 @@ clock = pygame.time.Clock()  # FPS 초당 프레임 수 조절
 background_image = pygame.transform.scale(pygame.image.load("메인.png"), (1100, 700))
 # 배경 이미지 1100, 700크기로 불러오기
 # font = pygame.font.Font("../SB 어그로OFT M.otf", 36)# 한글이 깨져서 변경
-font = pygame.font.Font("../SB 어그로OTF M.otf", 36)
+font = pygame.font.Font("../SB-B.ttf", 36)
 
 # -------------------------------
 # 색상 정의 (R, G, B 값으로 표현)
