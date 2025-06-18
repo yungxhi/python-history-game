@@ -220,29 +220,34 @@ while running:
         for idx, era in enumerate(quizzes.keys()):
             draw_button(era, 100, 100 + idx * 70, 700, 50)
 
-    elif stage == 'quiz':  # 퀴즈 문제 화면
-        q_data = quizzes[selected_era][question_idx]
-        question_lines = f"문제 {question_idx + 1}. {q_data[0]}".split('\n')
-        for idx, line in enumerate(question_lines):  # 줄바꿈 대응
-            line_surface = font.render(line, True, BLACK)
-            screen.blit(line_surface, (100, 100 + idx * 40))  # 줄 간격 조절
 
-        for i in range(4):  # 보기 버튼 출력
+    elif stage == 'quiz':  # 퀴즈 문제 화면
+        q_data = quizzes[selected_era][question_idx]  # 현재 문제 정보 가져오기
+        question_lines = f"문제 {question_idx + 1}. {q_data[0]}".split('\n')# 문제 내용이 여러 줄일 경우 줄바꿈 처리
+        for idx, line in enumerate(question_lines):
+            line_surface = font.render(line, True, BLACK)
+            screen.blit(line_surface, (100, 100 + idx * 40))  # 문제 출력 (줄마다 간격)
+        # 보기 4개 출력 (버튼 형태)
+        for i in range(4):
             draw_button(q_data[1][i], 100, 200 + i * 70, 700, 50)
+
 
     elif stage == 'explain':  # 해설 화면
         explanation_surface = font.render("해설:", True, GRAY)
-        screen.blit(explanation_surface, (100, 100))
-        wrapped_lines = current_explanation.split("\n")  # 줄바꿈 대응
+        screen.blit(explanation_surface, (100, 100))  # "해설:" 표시
+        wrapped_lines = current_explanation.split("\n")  # 해설 텍스트 줄바꿈 적용
         for idx, line in enumerate(wrapped_lines):
             line_surface = font.render(line, True, GRAY)
-            screen.blit(line_surface, (100, 150 + idx * 40))
-        draw_button("다음 문제", 300, 400, 300, 60)
+            screen.blit(line_surface, (100, 150 + idx * 40))  # 해설 문단 출력
+            draw_button("다음 문제", 300, 400, 300, 60)  # 다음 문제로 넘어가는 버튼
 
-    elif stage == 'result':  # 결과 화면
+
+
+    elif stage == 'result':  # 퀴즈 결과 화면
+        # 점수 요약 텍스트 구성 및 출력
         result_text = f"[{selected_era}] 총점: {score} / {len(quizzes[selected_era])}점"
         result_surface = font.render(result_text, True, BLUE)
-        screen.blit(result_surface, (100, 100))
+        screen.blit(result_surface, (100, 100))# 클릭 시 시대 선택 화면으로 이동할 수 있는 버튼
         draw_button("클릭하시면 시대선택 화면으로 넘어 갑니다.", 200, 300, 700, 60)
 
     pygame.display.flip()  # 화면 업데이트
